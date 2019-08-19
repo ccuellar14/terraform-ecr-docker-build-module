@@ -5,7 +5,7 @@ data "external" "build_folder" {
 
 # Builds test-service and pushes it into aws_ecr_repository
 resource "null_resource" "build_and_push" {
-  triggers {
+  triggers = {
     build_folder_content_md5 = "${data.external.build_folder.result.md5}"
   }
 
